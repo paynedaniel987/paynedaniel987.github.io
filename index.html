@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>华瑞国际集团 — 综合工程与产业服务</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --navy:#0A2E5C;--navy-2:#123E76;--blue:#1867C0;--ink:#1C2430;--gray:#5F6B7A;--light:#F2F5F9;--line:#DDE4ED;--orange:#E08B2C;
+  }
+  body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;color:var(--ink);line-height:1.75;background:#fff}
+  a{color:inherit;text-decoration:none}
+  ul{list-style:none}
+  .wrap{max-width:1220px;margin:0 auto;padding:0 24px}
+  img{max-width:100%;display:block}
+
+  /* top bar */
+  .topbar{background:var(--navy);color:rgba(255,255,255,.72);font-size:12.5px}
+  .topbar .wrap{display:flex;justify-content:space-between;align-items:center;height:38px}
+  .topbar .l{display:flex;gap:24px}
+  .topbar .r{display:flex;gap:20px;align-items:center}
+  .topbar .tel{color:#fff;font-weight:600;letter-spacing:.02em}
+  .topbar a:hover{color:#fff}
+
+  /* header */
+  header{background:#fff;box-shadow:0 1px 0 var(--line);position:sticky;top:0;z-index:50}
+  .hmain{display:flex;align-items:center;justify-content:space-between;height:88px}
+  .brand{display:flex;align-items:center;gap:14px}
+  .brand .mark{width:44px;height:44px;background:linear-gradient(135deg,var(--navy),var(--blue));border-radius:4px;display:grid;place-items:center;color:#fff;font-weight:700;font-size:19px;letter-spacing:-.02em}
+  .brand .txt b{display:block;font-size:20px;letter-spacing:.06em;color:var(--navy);line-height:1.2}
+  .brand .txt span{font-size:10.5px;letter-spacing:.16em;color:var(--gray);text-transform:uppercase}
+  .gnav{display:flex;gap:0;height:88px}
+  .gnav>li{position:relative}
+  .gnav>li>a{display:flex;align-items:center;height:88px;padding:0 22px;font-size:15.5px;color:var(--ink);font-weight:500}
+  .gnav>li>a:hover{color:var(--blue)}
+  .gnav>li::after{content:"";position:absolute;left:22px;right:22px;bottom:0;height:2px;background:var(--blue);transform:scaleX(0);transition:.3s}
+  .gnav>li:hover::after{transform:scaleX(1)}
+  .hsearch{width:40px;height:40px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;color:var(--gray)}
+
+  /* hero */
+  .hero{position:relative;height:600px;background:linear-gradient(120deg,#08284F 0%,#0F3E76 45%,#1A5EA6 100%);overflow:hidden}
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+    background-size:64px 64px;
+  }
+  .hero::after{
+    content:"";position:absolute;right:-10%;bottom:-30%;width:760px;height:760px;border-radius:50%;
+    background:radial-gradient(circle at 30% 30%,rgba(46,144,224,.5),transparent 62%);
+  }
+  .hero .wrap{position:relative;z-index:2;height:100%;display:flex;align-items:center}
+  .hero .inner{max-width:680px;color:#fff}
+  .hero .tagline{display:inline-block;font-size:13px;letter-spacing:.14em;border:1px solid rgba(255,255,255,.35);padding:7px 16px;border-radius:2px;margin-bottom:26px}
+  .hero h1{font-size:clamp(34px,4.2vw,56px);line-height:1.28;font-weight:700;letter-spacing:.01em}
+  .hero h1 em{font-style:normal;color:#8FC4F5}
+  .hero p{margin-top:22px;font-size:16px;color:rgba(255,255,255,.82);line-height:1.95;max-width:560px}
+  .hero .acts{margin-top:40px;display:flex;gap:16px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 34px;border-radius:3px;font-size:15px;font-weight:500;transition:.25s}
+  .btn.primary{background:#fff;color:var(--navy)}
+  .btn.primary:hover{background:#E6EFFA}
+  .btn.outline{border:1px solid rgba(255,255,255,.5);color:#fff}
+  .btn.outline:hover{background:rgba(255,255,255,.12)}
+  .hero-dots{position:absolute;left:0;right:0;bottom:26px;display:flex;justify-content:center;gap:9px;z-index:2}
+  .hero-dots i{width:26px;height:3px;background:rgba(255,255,255,.3);display:block}
+  .hero-dots i.on{background:#fff}
+
+  /* quick entry */
+  .quick{background:var(--light);border-bottom:1px solid var(--line)}
+  .quick .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);transform:translateY(-0px)}
+  .quick a{background:#fff;padding:30px 28px;display:flex;gap:16px;align-items:center;transition:.25s}
+  .quick a:hover{background:var(--navy);color:#fff}
+  .quick a:hover .qi{background:rgba(255,255,255,.16);color:#fff}
+  .quick .qi{width:46px;height:46px;border-radius:50%;background:#EAF1FA;color:var(--blue);display:grid;place-items:center;flex:0 0 auto;transition:.25s}
+  .quick b{display:block;font-size:16px}
+  .quick span{font-size:12.5px;color:var(--gray)}
+  .quick a:hover span{color:rgba(255,255,255,.7)}
+
+  /* section */
+  section{padding:88px 0}
+  .sec-title{text-align:center;margin-bottom:54px}
+  .sec-title .en{font-size:12px;letter-spacing:.24em;color:var(--blue);text-transform:uppercase}
+  .sec-title h2{font-size:34px;font-weight:700;color:var(--navy);margin:12px 0 14px;letter-spacing:.01em}
+  .sec-title p{color:var(--gray);font-size:15px}
+  .sec-title::after{content:"";display:block;width:48px;height:3px;background:var(--orange);margin:22px auto 0}
+
+  /* business cards */
+  .biz{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .biz article{border:1px solid var(--line);border-radius:4px;padding:38px 32px 34px;transition:.3s;background:#fff;position:relative;overflow:hidden}
+  .biz article::before{content:"";position:absolute;left:0;top:0;width:3px;height:0;background:var(--blue);transition:.35s}
+  .biz article:hover{box-shadow:0 14px 34px rgba(10,46,92,.09);transform:translateY(-3px)}
+  .biz article:hover::before{height:100%}
+  .biz .ico{width:52px;height:52px;background:#EAF1FA;color:var(--navy);display:grid;place-items:center;border-radius:4px;margin-bottom:24px}
+  .biz h3{font-size:19px;color:var(--navy);margin-bottom:12px}
+  .biz p{font-size:14px;color:var(--gray);line-height:1.9}
+  .biz ul{margin-top:20px;font-size:13.5px;color:var(--gray)}
+  .biz li{padding:7px 0;border-top:1px dashed var(--line)}
+  .biz li::before{content:"▪";color:var(--blue);margin-right:8px}
+
+  /* stats strip */
+  .stats{background:var(--navy);color:#fff;padding:0}
+  .stats .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+  .stat{padding:46px 20px;text-align:center;border-right:1px solid rgba(255,255,255,.14)}
+  .stat:last-child{border-right:0}
+  .stat b{display:block;font-size:40px;font-weight:700;letter-spacing:-.02em}
+  .stat b small{font-size:16px;font-weight:400;margin-left:3px;color:#9CC5EC}
+  .stat span{font-size:13.5px;color:rgba(255,255,255,.7);letter-spacing:.06em}
+
+  /* advantage */
+  .adv{display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:center}
+  .adv-visual{height:400px;border-radius:4px;background:linear-gradient(135deg,#E8EFF8,#C9DCEF);position:relative;overflow:hidden;display:grid;place-items:center;color:var(--navy)}
+  .adv-visual .grid-lines{position:absolute;inset:0;background-image:linear-gradient(rgba(10,46,92,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(10,46,92,.07) 1px,transparent 1px);background-size:40px 40px}
+  .adv-visual .badge{position:relative;text-align:center}
+  .adv-visual .badge b{display:block;font-size:64px;letter-spacing:-.03em;line-height:1}
+  .adv-visual .badge span{font-size:14px;letter-spacing:.14em;color:var(--gray)}
+  .adv-list{list-style:none}
+  .adv-item{display:grid;grid-template-columns:56px 1fr;gap:20px;padding:24px 0;border-bottom:1px solid var(--line)}
+  .adv-item:first-child{border-top:1px solid var(--line)}
+  .adv-item .num{font-size:15px;font-weight:700;color:var(--blue);padding-top:2px}
+  .adv-item h4{font-size:17.5px;color:var(--navy);margin-bottom:8px}
+  .adv-item p{font-size:14px;color:var(--gray);line-height:1.9}
+
+  /* projects */
+  .proj{background:var(--light)}
+  .proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .pj{background:#fff;border:1px solid var(--line);border-radius:4px;overflow:hidden;transition:.3s}
+  .pj:hover{box-shadow:0 16px 36px rgba(10,46,92,.1)}
+  .pj .ph{height:180px;position:relative;display:flex;align-items:flex-end;padding:16px;color:#fff;font-size:12.5px;letter-spacing:.06em}
+  .pj .ph.p1{background:linear-gradient(150deg,#123E76,#2A6FAE)}
+  .pj .ph.p2{background:linear-gradient(150deg,#3B4A5C,#5F7186)}
+  .pj .ph.p3{background:linear-gradient(150deg,#1D5C6E,#3D8FA3)}
+  .pj .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.42))}
+  .pj .ph span{position:relative;z-index:2}
+  .pj .bd{padding:24px 24px 28px}
+  .pj .bd h3{font-size:16.5px;color:var(--navy);margin-bottom:10px}
+  .pj .bd p{font-size:13.5px;color:var(--gray);line-height:1.85}
+  .pj .bd .meta{margin-top:16px;display:flex;justify-content:space-between;font-size:12px;color:#8494A6;border-top:1px solid var(--line);padding-top:14px}
+
+  /* about + news */
+  .about-news{display:grid;grid-template-columns:1fr 1fr;gap:70px}
+  .about-blk h2{font-size:30px;color:var(--navy);margin-bottom:22px}
+  .about-blk p{font-size:14.5px;color:var(--gray);line-height:2.05;margin-bottom:16px}
+  .about-blk .mini{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:30px}
+  .about-blk .mini div{background:var(--light);padding:20px 22px;border-radius:3px;border-left:3px solid var(--blue)}
+  .about-blk .mini b{display:block;font-size:15px;color:var(--navy)}
+  .about-blk .mini span{font-size:12.5px;color:var(--gray)}
+  .news h2{font-size:30px;color:var(--navy);margin-bottom:22px;display:flex;justify-content:space-between;align-items:baseline}
+  .news h2 a{font-size:13px;color:var(--gray);font-weight:400}
+  .news-item{display:grid;grid-template-columns:76px 1fr;gap:20px;padding:20px 0;border-bottom:1px solid var(--line)}
+  .news-item time{text-align:center;border-right:1px solid var(--line);padding-right:14px}
+  .news-item time b{display:block;font-size:26px;color:var(--navy);line-height:1}
+  .news-item time span{font-size:11.5px;color:var(--gray)}
+  .news-item h3{font-size:15.5px;color:var(--ink);font-weight:500;line-height:1.6}
+  .news-item h3:hover{color:var(--blue)}
+  .news-item p{font-size:13px;color:var(--gray);margin-top:6px}
+
+  /* footer */
+  footer{background:#071F3E;color:rgba(255,255,255,.66);padding:64px 0 0;font-size:13.5px}
+  .fgrid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.3fr;gap:48px;padding-bottom:48px}
+  .fgrid h5{color:#fff;font-size:15px;margin-bottom:20px;font-weight:600}
+  .fgrid ul{display:grid;gap:11px}
+  .fgrid a:hover{color:#fff}
+  .fgrid .cinfo{line-height:2.1}
+  .fgrid .cinfo b{color:#fff;font-weight:400;display:block;font-size:20px;letter-spacing:.02em;margin-bottom:4px}
+  .fbot{border-top:1px solid rgba(255,255,255,.12);padding:20px 0;display:flex;justify-content:space-between;font-size:12.5px;color:rgba(255,255,255,.44)}
+
+  @media(max-width:980px){
+    .gnav{display:none}
+    .topbar .l{display:none}
+    .hero{height:auto;padding:70px 0}
+    .quick .wrap{grid-template-columns:1fr 1fr}
+    .biz{grid-template-columns:1fr}
+    .stats .wrap{grid-template-columns:1fr 1fr}
+    .stat{border-bottom:1px solid rgba(255,255,255,.14)}
+    .adv{grid-template-columns:1fr;gap:32px}
+    .proj-grid{grid-template-columns:1fr}
+    .about-news{grid-template-columns:1fr;gap:44px}
+    .fgrid{grid-template-columns:1fr 1fr;gap:32px}
+    section{padding:56px 0}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="l"><span>股票代码 002xxx.SZ</span><span>EN</span><span>集团内网</span></div>
+    <div class="r"><span>全国服务热线</span><a href="tel:4008209888" class="tel">400-820-9888</a><span>|</span><a href="#">供应商入口</a><a href="#">员工登录</a></div>
+  </div>
+</div>
+
+<header>
+  <div class="wrap hmain">
+    <a href="#" class="brand">
+      <div class="mark">华</div>
+      <div class="txt"><b>华瑞国际</b><span>HUARUI INTERNATIONAL GROUP</span></div>
+    </a>
+    <ul class="gnav">
+      <li><a href="#business">业务领域</a></li>
+      <li><a href="#advantage">集团优势</a></li>
+      <li><a href="#projects">工程案例</a></li>
+      <li><a href="#about">关于华瑞</a></li>
+      <li><a href="#news">新闻资讯</a></li>
+      <li><a href="#contact">联系我们</a></li>
+    </ul>
+    <a href="#" class="hsearch" aria-label="搜索">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="7" cy="7" r="5"/><path d="m11 11 3 3"/></svg>
+    </a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="inner">
+      <div class="tagline">创立于 1996 年 · 全产业链综合服务商</div>
+      <h1>以工程为基，<br>为产业<em>提供长期可靠</em>的解决方案</h1>
+      <p>华瑞国际深耕工程咨询、供应链服务、清洁能源与数字化四大板块，业务覆盖国内 28 个省级行政区及 9 个海外市场，累计交付项目 2,100 余项。</p>
+      <div class="acts">
+        <a href="#business" class="btn primary">了解业务领域 →</a>
+        <a href="#contact" class="btn outline">联系业务顾问</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-dots"><i class="on"></i><i></i><i></i></div>
+</div>
+
+<div class="quick">
+  <div class="wrap">
+    <a href="#business">
+      <span class="qi"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 17V7l7-4 7 4v10"/><path d="M7 17v-5h6v5"/></svg></span>
+      <span><b>工程总承包</b><span>设计施工一体化</span></span>
+    </a>
+    <a href="#business">
+      <span class="qi"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="6" width="16" height="9" rx="1"/><path d="M6 6V4h8v2M6 15v2h8v-2"/></svg></span>
+      <span><b>供应链服务</b><span>集采与仓储物流</span></span>
+    </a>
+    <a href="#business">
+      <span class="qi"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 2v4M10 14v4M2 10h4M14 10h4"/><circle cx="10" cy="10" r="3.2"/></svg></span>
+      <span><b>清洁能源</b><span>光伏与储能</span></span>
+    </a>
+    <a href="#business">
+      <span class="qi"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="3.5" width="15" height="10" rx="1"/><path d="M7 17h6"/></svg></span>
+      <span><b>数字化服务</b><span>工业软件与平台</span></span>
+    </a>
+  </div>
+</div>
+
+<section id="business">
+  <div class="wrap">
+    <div class="sec-title">
+      <div class="en">Core Business</div>
+      <h2>四大业务板块</h2>
+      <p>围绕产业客户的全生命周期，提供从规划到运营的一体化服务</p>
+    </div>
+    <div class="biz">
+      <article>
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-6h6v6"/></svg></div>
+        <h3>工程咨询与总承包</h3>
+        <p>覆盖房建、市政、工业厂房的设计、采购与施工全流程，具备建筑工程施工总承包一级资质。</p>
+        <ul><li>全过程工程咨询</li><li>EPC 总承包</li><li>项目管理与监理</li></ul>
+      </article>
+      <article>
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="7" width="14" height="10" rx="1"/><path d="M16 11h4l2 3v3h-6"/><circle cx="6" cy="18.5" r="1.6"/><circle cx="18" cy="18.5" r="1.6"/></svg></div>
+        <h3>供应链与物流服务</h3>
+        <p>为制造业客户提供集中采购、VMI 库存管理与干线运输，年周转货物量超 460 万吨。</p>
+        <ul><li>原材料集采平台</li><li>仓储与干线运输</li><li>供应链金融服务</li></ul>
+      </article>
+      <article>
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></div>
+        <h3>清洁能源投资运营</h3>
+        <p>工商业分布式光伏、用户侧储能与综合能源管理，累计并网装机容量 780MW。</p>
+        <ul><li>分布式光伏 EPC</li><li>储能系统集成</li><li>能源托管运营</li></ul>
+      </article>
+      <article>
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="12" rx="1"/><path d="M8 20h8M12 16v4"/></svg></div>
+        <h3>工业数字化</h3>
+        <p>面向工厂现场的 MES、设备物联与能耗管理平台，已服务 300 余家制造企业。</p>
+        <ul><li>MES 生产执行系统</li><li>设备物联网平台</li><li>能耗与碳排管理</li></ul>
+      </article>
+      <article>
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div>
+        <h3>产业投资</h3>
+        <p>围绕主业上下游开展战略投资，管理产业基金规模 26 亿元，已投项目 31 个。</p>
+        <ul><li>成长期股权投资</li><li>产业并购整合</li><li>园区招商运营</li></ul>
+      </article>
+      <article>
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.4"/><path d="M4.5 21c0-4.1 3.4-7 7.5-7s7.5 2.9 7.5 7"/></svg></div>
+        <h3>设施运维服务</h3>
+        <p>为商业综合体、医院与产业园区提供机电、消防、安防的一体化运维托管。</p>
+        <ul><li>机电设备托管</li><li>智慧楼宇改造</li><li>7×24 应急响应</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><b>2,100<small>+</small></b><span>累计交付项目</span></div>
+    <div class="stat"><b>28</b><span>覆盖省级行政区</span></div>
+    <div class="stat"><b>5,600<small>人</small></b><span>集团员工总数</span></div>
+    <div class="stat"><b>29<small>年</small></b><span>持续经营年限</span></div>
+  </div>
+</div>
+
+<section id="advantage">
+  <div class="wrap">
+    <div class="sec-title">
+      <div class="en">Why Huarui</div>
+      <h2>为什么选择华瑞</h2>
+      <p>长期积累的资质、体系与团队，是交付确定性的基础</p>
+    </div>
+    <div class="adv">
+      <div class="adv-visual">
+        <div class="grid-lines"></div>
+        <div class="badge"><b>29</b><span>YEARS OF EXPERIENCE</span></div>
+      </div>
+      <div>
+        <div class="adv-list">
+          <div class="adv-item"><div class="num">01</div><div><h4>齐全的资质体系</h4><p>持有建筑工程施工总承包一级、市政公用工程二级、电力工程施工总承包三级等 17 项资质，具备承接大型复杂项目的准入条件。</p></div></div>
+          <div class="adv-item"><div class="num">02</div><div><h4>稳定的交付能力</h4><p>近五年项目一次验收合格率 99.3%，无重大安全责任事故记录；自建劳务与设备资源池，关键节点不依赖外部转包。</p></div></div>
+          <div class="adv-item"><div class="num">03</div><div><h4>全周期服务体系</h4><p>从前期可行性研究、方案设计到建设期管理、运营期托管，客户只需对接一个团队，避免多方协调成本。</p></div></div>
+          <div class="adv-item"><div class="num">04</div><div><h4>数字化管理底座</h4><p>自研项目管理系统贯通进度、成本、质量与安全四条主线，业主可实时查看工程数据与现场影像。</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="proj" id="projects">
+  <div class="wrap">
+    <div class="sec-title">
+      <div class="en">Projects</div>
+      <h2>代表工程案例</h2>
+      <p>从产业园区到城市基础设施，每一个项目都可回访</p>
+    </div>
+    <div class="proj-grid">
+      <div class="pj">
+        <div class="ph p1"><span>江苏 · 产业园区</span></div>
+        <div class="bd">
+          <h3>南通智能制造产业园（一期）</h3>
+          <p>总建筑面积 26.4 万㎡，含 8 栋标准厂房与配套服务中心，EPC 总承包模式交付。</p>
+          <div class="meta"><span>2023 年竣工</span><span>合同额 9.8 亿元</span></div>
+        </div>
+      </div>
+      <div class="pj">
+        <div class="ph p2"><span>浙江 · 市政交通</span></div>
+        <div class="bd">
+          <h3>嘉兴城市快速路改造工程</h3>
+          <p>全长 11.2 公里，含 3 座跨线桥与智慧交通系统集成，施工期未中断主路通行。</p>
+          <div class="meta"><span>2022 年通车</span><span>合同额 6.3 亿元</span></div>
+        </div>
+      </div>
+      <div class="pj">
+        <div class="ph p3"><span>安徽 · 清洁能源</span></div>
+        <div class="bd">
+          <h3>合肥经开区分布式光伏项目</h3>
+          <p>覆盖 42 栋厂房屋顶，装机 68MW，年发电量约 6,900 万度，配套 12MWh 储能。</p>
+          <div class="meta"><span>2024 年并网</span><span>合同额 3.1 亿元</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="about-news">
+      <div class="about-blk">
+        <div class="sec-title" style="text-align:left;margin-bottom:26px">
+          <div class="en">About Us</div>
+          <h2 style="margin-bottom:8px">关于华瑞国际</h2>
+        </div>
+        <p>华瑞国际集团创立于 1996 年，总部位于江苏南京，是一家以工程建设为基础、向供应链与清洁能源延伸的综合性产业服务集团。2011 年完成股份制改造，2016 年在深圳证券交易所挂牌上市。</p>
+        <p>集团下设 6 个事业部和 21 家成员企业，拥有员工 5,600 余人，其中各类注册执业人员 480 名、中高级职称技术人员 920 名。我们坚持"以工程立身、以服务取信"的经营理念，把每一个项目当作长期合作的开端。</p>
+        <div class="mini">
+          <div><b>企业使命</b><span>让产业基础设施更可靠</span></div>
+          <div><b>核心价值观</b><span>守约 · 精工 · 共赢</span></div>
+        </div>
+      </div>
+      <div class="news" id="news">
+        <h2>新闻资讯 <a href="#">更多 →</a></h2>
+        <div class="news-item">
+          <time><b>18</b><span>2026-11</span></time>
+          <div><h3><a href="#">集团中标安徽某经开区综合能源项目，合同金额 2.7 亿元</a></h3><p>项目包含屋顶光伏、储能与能源管理平台三部分，预计 2027 年二季度投运。</p></div>
+        </div>
+        <div class="news-item">
+          <time><b>05</b><span>2026-11</span></time>
+          <div><h3><a href="#">2026 年三季度经营简报：新签合同额同比增长 14.6%</a></h3><p>工程咨询板块保持稳健，清洁能源与数字化业务贡献增量明显。</p></div>
+        </div>
+        <div class="news-item">
+          <time><b>22</b><span>2026-10</span></time>
+          <div><h3><a href="#">集团获评"江苏省建筑业先进企业"，连续九年入选</a></h3><p>评选依据涵盖工程质量、安全生产、纳税信用与社会责任等维度。</p></div>
+        </div>
+        <div class="news-item">
+          <time><b>09</b><span>2026-10</span></time>
+          <div><h3><a href="#">华瑞数字科技与某汽车零部件龙头签署智能工厂合作协议</a></h3><p>双方将在 MES 深化应用与设备预测性维护领域开展三年期合作。</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <h5>华瑞国际集团</h5>
+        <div class="cinfo">
+          江苏省南京市建邺区江东中路 288 号<br>
+          华瑞国际中心 36 层<br>
+          总机：025-8666 2888<br>
+          邮箱：info@huarui-group.com
+        </div>
+      </div>
+      <div>
+        <h5>业务领域</h5>
+        <ul>
+          <li><a href="#">工程咨询与总承包</a></li>
+          <li><a href="#">供应链与物流</a></li>
+          <li><a href="#">清洁能源</a></li>
+          <li><a href="#">工业数字化</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>关于集团</h5>
+        <ul>
+          <li><a href="#">集团简介</a></li>
+          <li><a href="#">组织架构</a></li>
+          <li><a href="#">资质荣誉</a></li>
+          <li><a href="#">投资者关系</a></li>
+          <li><a href="#">人才招聘</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>业务咨询</h5>
+        <div class="cinfo">
+          <b>400-820-9888</b>
+          周一至周五 8:30 — 18:00<br>
+          工程业务转 1 · 供应链转 2<br>
+          能源业务转 3 · 数字化转 4
+        </div>
+      </div>
+    </div>
+    <div class="fbot">
+      <span>© 2026 华瑞国际集团股份有限公司 版权所有 · 苏ICP备 05001234 号</span>
+      <span>法律声明 | 隐私政策 | 网站地图</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
